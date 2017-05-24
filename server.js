@@ -10,7 +10,7 @@ app.get('/:timestamp', (req, res) => {
             unix: null,
             natural: null
         }
-        
+
     if (date != 'Invalid Date') {
         time.unix = date.getTime() / 1000
         time.natural = naturalize(date)
@@ -18,6 +18,19 @@ app.get('/:timestamp', (req, res) => {
 
     res.json(time)
 
+})
+
+app.get('/',(req,res)=>{
+    res.send(`<h3>Example usage:</h3>
+            <code> https://rudolfng-timestamp.herokuapp.com/December%2015,%202015</code><br>
+            <code> https://rudolfng-timestamp.herokuapp.com/1450137600</code>
+            <h3>Example output:</h3>
+            <code>
+                {
+                  "unix": 1450137600,
+                  "natural": "December 15, 2015"
+                }
+            </code>`)
 })
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`))
